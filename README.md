@@ -1,5 +1,5 @@
 # s2next
 Prueba técnica S2Next
 
-#Desarrollador
+# Desarrollador
 Francisco Arenal Guerrero
