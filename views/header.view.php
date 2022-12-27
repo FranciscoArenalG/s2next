@@ -9,11 +9,11 @@
     <title>S2Next - Evaluación</title>
     <!-- Librerías -->
     <link href="<?= constant('URL') ?>public/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <link href="<?=constant('URL')?>public/css/fontawesome-free-6.2.0-web/css/fontawesome.css" rel="stylesheet">
     <link href="<?=constant('URL')?>public/css/fontawesome-free-6.2.0-web/css/brands.css" rel="stylesheet">
     <link href="<?=constant('URL')?>public/css/fontawesome-free-6.2.0-web/css/solid.css" rel="stylesheet">
     <link href="<?=constant('URL')?>public/css/fontawesome-free-6.2.0-web/css/v5-font-face.css" rel="stylesheet">
+    <script src="<?php echo constant("URL");?>public/js/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                         <?php foreach ($menu->getMenu() as $menus) : ?>
                             <?php if ($menu->getByIdMenuSubmenu($menus['id_menu']) == false) : ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href=""><?=$menus['nombre_menu']?></a>
+                                    <a class="nav-link menus" href="javascript:;" data-descripcion="<?=$menus['descripcion_menu']?>"><?=$menus['nombre_menu']?></a>
                                 </li>
                             <?php else : ?>
                                 <li class="nav-item dropdown">

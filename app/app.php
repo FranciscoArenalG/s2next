@@ -31,7 +31,7 @@ class App
                 if ($nparam > 2) {
                     $param = [];
                     for ($i=2; $i < $nparam; $i++) { 
-                        array_push($param, $this->url[1]);
+                        array_push($param, $this->url[$i]);
                     }
                     if (method_exists($controller, $this->url[1])) {
                         $controller->{$this->url[1]}($param);

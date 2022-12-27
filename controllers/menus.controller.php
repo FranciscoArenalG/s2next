@@ -15,10 +15,11 @@ class Menus extends ControllerBase
         $this->view->menus = $resp;
         $this->view->render("menu/index");
     }
-    function descMenu($params = null)
+    function datosMenu($param = null)
     {
-        $resp = $this->model->descMenu($params[0]);
+        $resp = $this->model->datosMenu($param[0]);
         echo json_encode($resp);
+        return false;
     }
     function getMenu()
     {
@@ -34,5 +35,87 @@ class Menus extends ControllerBase
     {
         $resp = $this->model->getMenuPadre();
         echo json_encode($resp);
+    }
+    function eliminarMenu($param = null)
+    {
+        try {
+            $resp = $this->model->eliminarMenu($param[0]);
+            if ($resp) {
+                $data = [
+                    'titulo' => 'Menú eliminado',
+                    'texto' => 'Se ha eliminado el registro exitosamente!',
+                    'icono' => 'success'
+                ];
+            } else {
+                $data = [
+                    'titulo' => 'Error petición',
+                    'texto' => 'Ocurrio un problema con la petición!',
+                    'icono' => 'error'
+                ];
+            }
+        } catch (\Throwable $th) {
+            echo "Error controlador: " . $th->getMessage();
+            $data = [
+                'titulo' => 'Error servidor',
+                'texto' => 'Ocurrio un problema con el servidor!',
+                'icono' => 'error'
+            ];
+        }
+        echo json_encode($data);
+    }
+    function actualizarMenu()
+    {
+        try {
+            $resp = $this->model->actualizarMenu($_POST);
+            if ($resp) {
+                $data = [
+                    'titulo' => 'Menú actualizado',
+                    'texto' => 'Se ha actualizado correctamente!',
+                    'icono' => 'success'
+                ];
+            } else {
+                echo $resp;
+                $data = [
+                    'titulo' => 'Error petición',
+                    'texto' => 'Ocurrio un problema con la petición!',
+                    'icono' => 'error'
+                ];
+            }
+        } catch (\Throwable $th) {
+            echo "Error controlador: " . $th->getMessage();
+            $data = [
+                'titulo' => 'Error servidor',
+                'texto' => 'Ocurrio un problema con el servidor!',
+                'icono' => 'error'
+            ];
+        }
+        echo json_encode($data);
+    }
+    function crearMenu()
+    {
+        try {
+            $resp = $this->model->crearMenu($_POST);
+            if ($resp) {
+                $data = [
+                    'titulo' => 'Menú creado',
+                    'texto' => 'Se creo correctamente el menú!',
+                    'icono' => 'success'
+                ];
+            } else {
+                $data = [
+                    'titulo' => 'Error petición',
+                    'texto' => 'Ocurrio un problema con la petición!',
+                    'icono' => 'error'
+                ];
+            }
+        } catch (\Throwable $th) {
+            echo "Error controlador: " . $th->getMessage();
+            $data = [
+                'titulo' => 'Error servidor',
+                'texto' => 'Ocurrio un problema con el servidor!',
+                'icono' => 'error'
+            ];
+        }
+        echo json_encode($data);
     }
 }
