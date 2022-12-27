@@ -12,3 +12,8 @@ Francisco Arenal Guerrero
 ## Jquery v3.6.0
 ## JavaScript
 ## HTML5
+
+# Credenciales BD
+## Database: s2next
+## Usuario: root
+## Contraseña : 
